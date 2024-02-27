@@ -36,7 +36,7 @@ fun CustomViewPath() {
         .pointerInteropFilter {
             when (it.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("xxx", "ACTION_DOWN aadd")
+                    Log.d("xxx", "ACTION_DOWN aaddddd")
                     val lastPath = totalPathState[totalPathState.size -1].points.toMutableList().apply { add(Point(it.x,it.y)) }.toList()
                     totalPathState[totalPathState.size -1] = PointPath(lastPath)
                 }
