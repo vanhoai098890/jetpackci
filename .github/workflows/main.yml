@@ -75,8 +75,9 @@ jobs:
           script: ./gradlew connectedCheck
       - name: upload test report
         uses: actions/upload-artifact@v4.3.1
-        with name: androidTestIndex.html
-        path: app\build\reports\androidTests\connected\debug\index.html
+        with:
+          name: androidTestIndex.html
+          path: app\build\reports\androidTests\connected\debug\index.html
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
