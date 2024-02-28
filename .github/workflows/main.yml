@@ -26,6 +26,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 17
+          cache: gradle
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Run lint
@@ -51,6 +52,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 17
+          cache: gradle
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: run unittest
@@ -59,7 +61,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: testReportIndex.html
-          path: app\build\reports\tests\testDebugUnitTest
+          path: app/build/reports/tests/testDebugUnitTest/index.html
 
   build:
     # The type of runner that the job will run on
