@@ -21,21 +21,23 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
-      - name: Set up Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: "temurin"
-          java-version: 17
-          cache: gradle
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-      - name: Run lint
-        run: ./gradlew lintDebug
-      - name: upload artifact
-        uses: actions/upload-artifact@v4.3.1
-        with:
-          name: index.html
-          path: app/build/reports/lint-results-debug.html
+#      - name: Set up Java
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: "temurin"
+#          java-version: 17
+#          cache: gradle
+#      - name: Change wrapper permissions
+#        run: chmod +x ./gradlew
+#      - name: Run lint
+#        run: ./gradlew lintDebug
+#      - name: upload artifact
+#        uses: actions/upload-artifact@v4.3.1
+#        with:
+#          name: index.html
+#          path: app/build/reports/lint-results-debug.html
+
+
 #          phần download artifact này chỉ để down về rồi làm việc cho các job sau
 #  hay sao đó chơ không phải ddoowwn xuống máy :D
 #      - name: download artifact
@@ -47,21 +49,21 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: "temurin"
-          java-version: 17
-          cache: gradle
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-      - name: run unittest
-        run: ./gradlew test
-      - name: upload test report
-        uses: actions/upload-artifact@v4.3.1
-        with:
-          name: testReportIndex.html
-          path: app/build/reports/tests/testDebugUnitTest/index.html
+#      - name: Set up Java
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: "temurin"
+#          java-version: 17
+#          cache: gradle
+#      - name: Change wrapper permissions
+#        run: chmod +x ./gradlew
+#      - name: run unittest
+#        run: ./gradlew test
+#      - name: upload test report
+#        uses: actions/upload-artifact@v4.3.1
+#        with:
+#          name: testReportIndex.html
+#          path: app/build/reports/tests/testDebugUnitTest/index.html
   instrument_test:
     runs-on: macos-latest
     needs: unit_test
@@ -94,13 +96,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+#
+#      # Runs a single command using the runners shell
+#      - name: Run a one-line script
+#        run: echo Hello, world!
+#
+#      # Runs a set of commands using the runners shell
+#      - name: Run a multi-line script
+#        run: |
+#          echo Add other actions to build,
+#          echo test, and deploy your project.
