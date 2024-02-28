@@ -35,16 +35,36 @@ jobs:
         with:
           name: index.html
           path: app/build/reports/lint-results-debug.html
-      - name: download artifact
-        uses: actions/download-artifact@v4.1.3
-      - name: Display structure of downloaded files
-        run: ls -R
+#          phần download artifact này chỉ để down về rồi làm việc cho các job sau
+#  hay sao đó chơ không phải ddoowwn xuống máy :D
+#      - name: download artifact
+#        uses: actions/download-artifact@v4.1.3
+#      - name: Display structure of downloaded files
+#        run: ls -R
+  unit_test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: 17
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: run unittest
+        run: ./gradlew test
+      - name: upload test report
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: testReportIndex.html
+          path: app\build\reports\tests\testDebugUnitTest
 
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    needs: lint
-
+    needs: unit_test
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
