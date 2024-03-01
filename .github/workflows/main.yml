@@ -107,7 +107,7 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Sonar scan
-        run: ./gradlew sonar
+        run: ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
   build:
     # The type of runner that the job will run on
